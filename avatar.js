@@ -131,13 +131,58 @@ async function initAvatar() {
     console.log('Avatar added to scene');
     console.log('Scene children:', scene.children.length);
     
+    // Load animations
+    let mixer = null;
+    let currentAction = null;
+    
+    if (gltf.animations && gltf.animations.length > 0) {
+      console.log('Available animations:', gltf.animations.map(a => a.name));
+      
+      mixer = new THREE.AnimationMixer(avatar);
+      const clips = gltf.animations;
+      
+      // Find and store animation clips by name
+      const waveClip = THREE.AnimationClip.findByName(clips, 'mixamo.com:003');
+      const stumbleClip = THREE.AnimationClip.findByName(clips, 'mixamo.com:005');
+      const waveAction = mixer.clipAction(waveClip);
+      const stumbleAction = mixer.clipAction(stumbleClip);
+      
+      currentAction = waveAction;
+      currentAction.play();
+      
+      // Store actions for potential UI control
+      window.avatarAnimations = {
+        wave: waveAction,
+        stumble: stumbleAction,
+        mixer: mixer,
+        play: (actionName) => {
+          if (window.avatarAnimations[actionName]) {
+            if (currentAction) currentAction.stop();
+            currentAction = window.avatarAnimations[actionName];
+            currentAction.play();
+          }
+        }
+      };
+      
+      console.log('Animations loaded and ready');
+    } else {
+      console.warn('No animations found in model');
+    }
+    
     if (loadingElement) {
       loadingElement.style.display = 'none';
     }
 
     // Animate
+    const clock = new THREE.Clock();
     function animate() {
       requestAnimationFrame(animate);
+      const delta = clock.getDelta();
+      
+      if (mixer) {
+        mixer.update(delta);
+      }
+      
       controls.update();
       renderer.render(scene, camera);
     }
