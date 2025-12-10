@@ -16,16 +16,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <link rel="stylesheet" href="styles.css">
-      <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@v0.158.0/build/three.module.js",
-        "three/addons/": "https://unpkg.com/three@v0.158.0/examples/jsm/"
-      }
-    }
-  </script>
-
-  <script type="module" src="avatar.js"></script>
+    
+    <script async src="https://unpkg.com/three@r128/build/three.min.js"></script>
+    <script async src="https://unpkg.com/three@r128/examples/js/loaders/GLTFLoader.js"></script>
+    <script async src="https://unpkg.com/three@r128/examples/js/controls/OrbitControls.js"></script>
 
 </head>
 
@@ -440,5 +434,6 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+    <script src="avatar.js"></script>
 </body>
 </html>

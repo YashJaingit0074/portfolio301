@@ -1,8 +1,5 @@
 
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-
+// Using global THREE from CDN
 window.onload = () => loadModel();
 
 function loadModel() {
@@ -16,7 +13,7 @@ function loadModel() {
   
   console.log('Loading 3D model...');
   
-  const loader = new GLTFLoader();
+  const loader = new THREE.GLTFLoader();
   loader.load('/public/46936_autosave.glb',
     (gltf) => {
       console.log('Model loaded successfully:', gltf);
@@ -82,7 +79,7 @@ function setupScene(gltf) {
       60, container.clientWidth / container.clientHeight, 0.1, 1000);
     camera.position.set(0, 1, 4);
 
-    const controls = new OrbitControls(camera, renderer.domElement);
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.1;
     controls.enablePan = false;
