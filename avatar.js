@@ -1,7 +1,7 @@
-// Use explicit module URLs to avoid CDN path mismatches
+// Use local copies to avoid CDN/network issues
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js';
-import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from './libs/GLTFLoader.js';
+import { OrbitControls } from './libs/OrbitControls.js';
 
 let scene, camera, renderer, controls;
 
