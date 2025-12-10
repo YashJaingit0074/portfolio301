@@ -3,7 +3,11 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-window.onload = () => loadModel();
+// Wait for DOM to be ready before loading
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM loaded, THREE available:', typeof THREE);
+  loadModel();
+});
 
 function loadModel() {
   const container = document.getElementById('avatar-container');
@@ -15,9 +19,11 @@ function loadModel() {
   }
   
   console.log('Loading 3D model...');
+  console.log('GLTFLoader available:', typeof GLTFLoader);
   
-  const loader = new GLTFLoader();
-  loader.load('/46936_autosave.glb',
+  try {
+    const loader = new GLTFLoader();
+    loader.load('/46936_autosave.glb',
     (gltf) => {
       console.log('Model loaded successfully:', gltf);
       console.log('Animations available:', gltf.animations?.map(clip => clip.name) || 'None');
@@ -42,7 +48,10 @@ function loadModel() {
         loadingElement.style.color = '#ff6b6b';
       }
     }
-  );
+    );
+  } catch (err) {
+    console.error('Error in loadModel:', err);
+  }
 }
 
 function setupScene(gltf) {
