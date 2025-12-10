@@ -82,14 +82,18 @@ async function initAvatar() {
     console.log('Model loaded successfully:', gltf);
     
     const avatar = gltf.scene;
+    console.log('Avatar scene:', avatar);
+    console.log('Avatar children:', avatar.children.length);
     
     // Calculate bounds
     const box = new THREE.Box3().setFromObject(avatar);
     const size = box.getSize(new THREE.Vector3());
+    console.log('Avatar size:', size);
     const maxDimension = Math.max(size.x, size.y, size.z);
     
     // Scale appropriately
     const scale = 1.5 / maxDimension;
+    console.log('Scale factor:', scale);
     avatar.scale.setScalar(scale);
     avatar.position.set(0, 0, 0);
 
@@ -109,6 +113,8 @@ async function initAvatar() {
     });
 
     scene.add(avatar);
+    console.log('Avatar added to scene');
+    console.log('Scene children:', scene.children.length);
     
     if (loadingElement) {
       loadingElement.style.display = 'none';
@@ -120,6 +126,7 @@ async function initAvatar() {
       controls.update();
       renderer.render(scene, camera);
     }
+    console.log('Starting animation loop');
     animate();
 
     // Handle resize
