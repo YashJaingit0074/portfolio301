@@ -10,7 +10,8 @@ A modern, interactive portfolio website featuring a 3D avatar, smooth animations
 
 ## 🚀 Live Demo
 
-Visit the live portfolio: [Your Vercel URL here]
+Visit the live portfolio: [https://portfolio007.vercel.app](https://portfolio007.vercel.app)
+*(Update this URL after deploying to Vercel)*
 
 ## ✨ Features
 
@@ -111,7 +112,18 @@ http://localhost:8000
 
 ## 📦 Deployment
 
-### Deploy to Vercel
+### Deploy to Vercel (GitHub Integration - Recommended)
+
+1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
+2. Click **Add New** → **Project**
+3. Click **Import Git Repository**
+4. Search for `YashJaingit0074/portfolio007`
+5. Click **Import**
+6. Click **Deploy**
+
+**Auto-deployment:** Every push to `main` automatically deploys!
+
+### Deploy via Vercel CLI
 
 1. Install Vercel CLI:
 ```bash
@@ -120,15 +132,10 @@ npm i -g vercel
 
 2. Deploy:
 ```bash
-vercel
+vercel --prod
 ```
 
-3. Follow the prompts to complete deployment
-
-Alternatively, deploy via GitHub:
-1. Push code to GitHub
-2. Import project in Vercel dashboard
-3. Deploy with one click
+3. Get your production URL
 
 ## 💻 Development
 
@@ -198,8 +205,9 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **Yash Jain**
 - LinkedIn: [linkedin.com/in/yash-jain-31a3242a8](https://www.linkedin.com/in/yash-jain-31a3242a8/)
-- Email: yash@example.com
-- Portfolio: [Your Vercel URL]
+- Email: yashjain@0074@gmail.com
+- Portfolio: [https://portfolio007.vercel.app](https://portfolio007.vercel.app)
+- GitHub: [github.com/YashJaingit0074/portfolio007](https://github.com/YashJaingit0074/portfolio007)
 
 ## 🙏 Acknowledgments
 
