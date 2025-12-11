@@ -3,33 +3,47 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-console.log('Avatar.js v15 loaded - ES Module version');
+console.log('Avatar.js v16 loaded - ES Module version');
 
-window.onload = () => loadModel();
+window.onload = () => {
+  // Wait a bit for container to be ready
+  setTimeout(loadModel, 100);
+};
 
 function loadModel() {
+  const container = document.getElementById('avatar-container');
+  if (!container) {
+    console.error('Avatar container not found!');
+    return;
+  }
+  
   console.log('Loading 3D model...');
   const loader = new GLTFLoader();
   loader.load('46936_autosave.glb',
     (gltf) => {
-      setupScene(gltf);
+      setupScene(gltf, container);
     }, 
     undefined,
     (error) => {
-      console.log(error);
+      console.error('Error loading model:', error);
     }
   );
 }
 
-function setupScene(gltf) {
+function setupScene(gltf, container) {
+    // Get container dimensions with fallbacks
+    const width = container.clientWidth || 400;
+    const height = container.clientHeight || 500;
+    
+    console.log('Container size:', width, 'x', height);
+    
     const renderer = new THREE.WebGLRenderer({ 
       antialias: true, 
       alpha: true 
     });
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     
-    const container = document.getElementById('avatar-container');
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setSize(width, height);
     renderer.setPixelRatio(window.devicePixelRatio);
     
     renderer.shadowMap.enabled = true;
@@ -38,8 +52,7 @@ function setupScene(gltf) {
     container.appendChild(renderer.domElement);
 
     // Camera setup
-    const camera = new THREE.PerspectiveCamera(
-      45, container.clientWidth / container.clientHeight);
+    const camera = new THREE.PerspectiveCamera(45, width / height);
     camera.position.set(0.2, 0.5, 1);
 
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -125,9 +138,11 @@ function setupScene(gltf) {
     });
 
     window.addEventListener('resize', () => {
-      camera.aspect = container.clientWidth / container.clientHeight;
+      const w = container.clientWidth || 400;
+      const h = container.clientHeight || 500;
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setSize(w, h);
     });
 
     const clock = new THREE.Clock();
