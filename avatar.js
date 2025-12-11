@@ -3,9 +3,12 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
+console.log('Avatar.js v15 loaded - ES Module version');
+
 window.onload = () => loadModel();
 
 function loadModel() {
+  console.log('Loading 3D model...');
   const loader = new GLTFLoader();
   loader.load('46936_autosave.glb',
     (gltf) => {
