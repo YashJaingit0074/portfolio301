@@ -1,12 +1,19 @@
 {
   "version": 2,
-  "builds": [
+  "headers": [
     {
-      "src": "index.html",
-      "use": "@vercel/static"
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+      ]
     }
   ],
   "routes": [
+    {
+      "src": "/avatar.js",
+      "dest": "/avatar.js",
+      "headers": { "Cache-Control": "no-cache" }
+    },
     {
       "src": "/(.*)",
       "dest": "/$1"
