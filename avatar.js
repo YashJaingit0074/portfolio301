@@ -10,7 +10,6 @@ function loadModel() {
   loader.load('46936_autosave.glb',
     (gltf) => {
       setupScene(gltf);
-      document.getElementById('avatar-loading').style.display = 'none';
     }, 
     undefined,
     (error) => {
