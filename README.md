@@ -197,7 +197,7 @@ Add project cards in the Work section of `index.html`:
 
 - 💼 LinkedIn: [linkedin.com/in/yash-jain-31a3242a8](https://www.linkedin.com/in/yash-jain-31a3242a8/)
 - 📧 Email: jainyash0074@gmail.com
-- 🌐 Portfolio:
+- 🌐 Portfolio:(https://portfolio200.vercel.app/)
 - 🐱 GitHub: [github.com/YashJaingit0074](https://github.com/YashJaingit0074)
 
 ## 🙏 Acknowledgments
