@@ -79,8 +79,8 @@ portfolio/
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/YashJaingit0074/portfolio001.git
-cd portfolio001
+git clone https://github.com/YashJaingit0074/portfolio301.git
+cd portfolio301
 ```
 
 2. **Run a local server:**
@@ -107,7 +107,7 @@ http://localhost:8000
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Click **Add New → Project**
 3. Click **Import Git Repository**
-4. Search for `YashJaingit0074/portfolio001`
+4. Search for `YashJaingit0074/portfolio301`
 5. Click **Import**
 6. Click **Deploy**
 
